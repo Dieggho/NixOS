@@ -62,6 +62,7 @@
   sound.enable = true;
 
   programs.river.enable = true;
+  users.defaultUserShell = pkgs.mksh;
 
   hardware.opengl = {
     enable = true;
@@ -92,10 +93,9 @@
   lite-xl
   gucharmap
   intel-media-driver
-  vulkan-loader
-  vulkan-tools
-  vulkan-headers
-  vulkan-validation-layers
+  ffmpeg
+  gimp
+  telegram-desktop
   python3
   nwg-launchers
   nwg-look
