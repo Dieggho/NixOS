@@ -52,7 +52,7 @@
   users.users.void = {
     isNormalUser = true;
     description = "void";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "optical"];
     packages = with pkgs; [];
   };
 
@@ -60,8 +60,20 @@
   nixpkgs.config.allowUnfree = true;
 
   sound.enable = true;
+  zramSwap.enable = true;
 
+  # Enable doas instead of sudo
+  security.doas.enable = true;
+  security.sudo.enable = false;
+  # Configure doas
+  security.doas.extraRules = [{
+	users = [ "void" ];
+	keepEnv = true;
+  }];
+
+  programs.udevil.enable = true;
   programs.river.enable = true;
+  programs.regreet.enable = true;
   users.defaultUserShell = pkgs.mksh;
 
   hardware.opengl = {
@@ -82,23 +94,32 @@
   alsa-utils
   foot
   wbg
+  qt5ct
+  hyprpicker
+  libnotify
+  dunst
+  simple-mtpfs
+  gnome.dconf-editor
+  galculator
   dash
   mksh
-  deadbeef
+  deadbeef-with-plugins
   pcmanfm
   lxtask
   imv
   grim
+  greetd.gtkgreet
+  cage
   slurp
-  lite-xl
+  leafpad
   gucharmap
   intel-media-driver
-  ffmpeg
+  ffmpeg-full
   gimp
   telegram-desktop
+  transmission
   python3
-  nwg-launchers
-  nwg-look
+  unzip
   p7zip
   ];
 
@@ -114,9 +135,21 @@
       "${XDG_BIN_HOME}"
     ];
   };
+    services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+       vt = 7;
+       command = "${pkgs.cage}/bin/cage -d -s -- gtkgreet -b /home/void/.local/share/backgrounds/nixos.png";
+       user = "void";
+      };
+    };
+  };
 
-  services.logind.lidSwitchExternalPower = "ignore";
-
+  environment.etc."greetd/environments".text = ''
+    river
+  '';
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -143,5 +176,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
+
