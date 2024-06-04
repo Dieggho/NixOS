@@ -1,0 +1,22 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" Move-Up\n Move-Left\n Move-Right\n Move-Down\n Toggle-Float\n Close"
+
+selected=$(echo $entries|wofi -x 830 --width 233 --height 277 --dmenu --cache-file /dev/null --prompt="Toplevel Manager"| awk '{print tolower($2)}')
+
+case $selected in
+move-up)
+    hyprctl dispatch movewindow u;;
+move-left)
+    hyprctl dispatch movewindow l;;
+move-right)
+    hyprctl dispatch movewindow r;;
+move-down)
+    hyprctl dispatch movewindow d;;
+toggle-float)
+    hyprctl dispatch togglefloating;;
+close)
+    hyprctl dispatch killactive;;
+esac
