@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Un7z
+Exec=/home/void/.sh/un7z %f
+Categories=Other;
+MimeType=application/x-7z-compressed
+Terminal=false
+Icon=application-x-7z-compressed.svg
+NoDisplay=true

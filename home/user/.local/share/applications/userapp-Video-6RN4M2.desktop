@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Video
+Exec=Video %f
+Categories=Other;
+NoDisplay=true
+MimeType=video/x-matroska
+Terminal=false
+Icon=video-x-generic

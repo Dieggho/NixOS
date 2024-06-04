@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Unzip
+Exec=/home/void/.sh/Unzip %f
+Categories=Other;
+NoDisplay=true
+MimeType=application/zip
+Terminal=false
+Icon=application-zip.svg

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Amixer
+Type=Application
+GenericName=Alsa mixer
+Terminal=false
+Exec=Amixer
+Icon=audio-volume-high
+Categories=Audio;AudioVideo;Player;GTK;
+Keywords=system

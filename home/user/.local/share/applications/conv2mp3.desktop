@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=conv2mp3
+Exec=/home/void/.sh/conv2mp3
+MimeType=video/mp4;video/webm
+Icon=/home/void/.icons/Breeze-Blue-Dark/devices/64/media-optical-audio.svg
+Type=Application
+NoDisplay=true

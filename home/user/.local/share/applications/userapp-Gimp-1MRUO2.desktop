@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Gimp
+Exec=Gimp %f
+Categories=Other;
+NoDisplay=true
+MimeType=image/jpeg
+Terminal=false
+Icon=/home/void/.icons/Breeze-Blue-Dark/apps/48/gimp.svg

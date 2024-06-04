@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Untar
+Exec=/home/void/.sh/untar %f
+Categories=Other;
+NoDisplay=true
+MimeType=application/x-compressed-tar
+Terminal=false
+Icon=application-x-compressed-tar

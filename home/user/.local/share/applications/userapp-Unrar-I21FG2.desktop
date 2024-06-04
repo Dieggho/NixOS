@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Unrar
+Exec=/home/void/.sh/Unrar %f
+Categories=Other;
+NoDisplay=true
+MimeType=application/vnd.rar
+Terminal=false
+Icon=application-vnd.rar

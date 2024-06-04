@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=View
+Exec=View %f
+Categories=Other;
+NoDisplay=false
+MimeType=image/webp;image/jpeg;image/jpg;image/png;inode/directory
+Terminal=false
+Icon=image-x-generic

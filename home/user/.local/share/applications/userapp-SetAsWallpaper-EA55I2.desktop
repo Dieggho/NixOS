@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Set As Wallpaper
+Exec=/home/void/.sh/SetAsWallpaper %f
+Categories=Other;
+#NoDisplay=true
+MimeType=image/webp;image/jpeg;image/jpg;image/png
+Terminal=false
+Icon=preferences-desktop-wallpaper

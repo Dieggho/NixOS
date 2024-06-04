@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Compress
+Exec=/home/void/.sh/xarch %f
+Categories=Other;
+NoDisplay=true
+MimeType=inode/directory
+Terminal=true
+X-KeepTerminal=false
+Icon=application-x-compress.svg

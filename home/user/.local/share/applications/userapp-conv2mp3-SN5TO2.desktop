@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=conv2mp3
+Exec=/home/void/.sh/conv2mp3 %f
+Categories=Other;
+NoDisplay=true
+MimeType=video/webm
+Terminal=false
+Icon=/home/void/.icons/Breeze-Blue-Dark/devices/64/media-optical-audio.svg
