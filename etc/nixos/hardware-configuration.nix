@@ -12,14 +12,14 @@
   boot.kernelParams = [ "quiet""i915.force_probe=5917" "udev.log_level=3" "acpi_backlight=video" "fbcon=nodefer" "video=eDP-1:1920x1080@60" "intel_iommu=igfx_off" "enable_dc=2" "enable_fbc=1" "fastboot=1" "acpi_rev_override=5" "i915.enable_guc=2" ];
   
  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/";
+    { device = "/dev/disk/by-uuid/"; # Declare uuid for your "/" partition
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/";
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/"; # Declare uuid for your encrypted partition
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/";
+    { device = "/dev/disk/by-uuid/"; # Declare uuid for your "/boot" partition
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
