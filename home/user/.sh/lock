@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+systemctl suspend & swaylock -i /home/void/.local/share/backgrounds/nixos.png --inside-color 1A1E2233 --ring-color 5378B633 --key-hl-color 5378B6

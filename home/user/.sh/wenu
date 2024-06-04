@@ -1,0 +1,28 @@
+#!/usr/bin/env dash
+pkill wofi
+entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Wallpapers\n Terminal"
+
+selected=$(echo $entries|wofi -x 0 --width 240 --height 418 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
+
+case $selected in
+  file)
+    pcmanfm;;
+  deadbeef)
+    chtag 1; deadbeef;;
+  telegram)
+    chtag 1; telegram;;
+  firefox)
+    chtag 2; firefox;;
+  editor)
+    chtag 4; leafpad;;
+  calculator)
+    galculator;;
+  gucharmap)
+    chtag 4; gucharmap;;
+  gtk-theme)
+    chtag 7; dconf-editor;;
+  wallpapers)
+    wallpaper;;
+  terminal)
+    chtag 5; foot;;
+esac

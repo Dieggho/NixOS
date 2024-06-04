@@ -1,0 +1,3 @@
+#!/usr/bin/env dash
+pkill waybar
+hyprctl dispatch exec 'waybar -c /home/void/.config/hypr/config'

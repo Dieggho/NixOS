@@ -1,0 +1,3 @@
+#!/usr/bin/env dash
+chtag 6
+imv-wayland -b 1A1E22 -c toggle_playing -l -r "$@"

@@ -1,0 +1,14 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" BR\n US"
+
+selected=$(echo $entries|wofi -x 1215 --width 1 --height 130 --dmenu --cache-file /dev/null --prompt="Keyboard Layout"| awk '{print tolower($2)}')
+
+case $selected in
+br)
+    setlayout br;;
+us)
+    setlayout us;;
+esac

@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+foot -a SmartTerm alsamixer

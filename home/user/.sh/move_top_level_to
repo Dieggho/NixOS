@@ -1,0 +1,30 @@
+#!/usr/bin/env dash
+pkill wofi
+
+entries=" Main\n Web\n Net\n Doc\n Term\n Media\n Desk"
+
+selected=$(echo $entries|wofi -x 830 --width 240 --height 310 --dmenu --cache-file /dev/null --prompt="Move Toplevel To Tag.."| awk '{print tolower($2)}')
+
+case $selected in
+main)
+    riverctl set-view-tags $((1 << (1 - 1)));
+    hyprctl dispatch movetoworkspace 1;;
+web)
+    riverctl set-view-tags $((1 << (2 - 1)));
+    hyprctl dispatch movetoworkspace 2;;
+net)
+    riverctl set-view-tags $((1 << (3 - 1)));
+    hyprctl dispatch movetoworkspace 3;;
+doc)
+    riverctl set-view-tags $((1 << (4 - 1)));
+    hyprctl dispatch movetoworkspace 4;;
+term)
+    riverctl set-view-tags $((1 << (5 - 1)));
+    hyprctl dispatch movetoworkspace 5;;
+media)
+    riverctl set-view-tags $((1 << (6 - 1)));
+    hyprctl dispatch movetoworkspace 6;;
+desk)
+    riverctl set-view-tags $((1 << (7 - 1)));
+    hyprctl dispatch movetoworkspace 7;;
+esac

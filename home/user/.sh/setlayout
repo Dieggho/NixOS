@@ -1,0 +1,11 @@
+#!/usr/bin/env dash
+
+cat <<EOF > /home/void/.sh/keyboardstatus
+#!/bin/sh
+echo  "$@"
+EOF
+
+riverctl keyboard-layout -model "thinkpad" "$@"
+hyprctl keyword input:kb_layout "$@"
+
+#notify-send "Keyboard Layout has been set" "'$@' is now your keyboard layout" -t 2000

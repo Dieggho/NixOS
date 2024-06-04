@@ -1,0 +1,18 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" Move-Up\n Move-Down\n Toggle-Float\n Close"
+
+selected=$(echo $entries|wofi -x 830 --width 233 --height 205 --dmenu --cache-file /dev/null --prompt="Toplevel Manager"| awk '{print tolower($2)}')
+
+case $selected in
+move-up)
+    riverctl swap previous;;
+move-down)
+    riverctl swap next;;
+toggle-float)
+    riverctl toggle-float;;
+close)
+    riverctl close;;
+esac

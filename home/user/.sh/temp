@@ -1,0 +1,7 @@
+#!/usr/bin/env dash
+while true
+do
+clear
+sensors
+sleep 0.5
+done

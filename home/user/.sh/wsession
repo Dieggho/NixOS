@@ -1,0 +1,20 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" Logout\n⏾ Suspend\n Lock\n Reboot\n Shutdown"
+
+selected=$(echo $entries|wofi -x 1712 --width 1 --height 240 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
+
+case $selected in
+  logout)
+    logoff;;
+  suspend)
+    systemctl suspend;;
+  lock)
+    lock;;
+  reboot)
+    reboot;;
+  shutdown)
+    poweroff;;
+esac

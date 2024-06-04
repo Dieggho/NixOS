@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+grim "/home/void/Pictures/Screenshots/$(date).png" && notify-send -t 2000 "Screenshot taken" "$(date).png"

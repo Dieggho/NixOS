@@ -1,0 +1,14 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" Normal\n Grab"
+
+selected=$(echo $entries|wofi -x 430 --width 1 --height 130 --dmenu --cache-file /dev/null --prompt="River Mode Switch"| awk '{print tolower($2)}')
+
+case $selected in
+normal)
+    riverctl enter-mode normal;;
+grab)
+    riverctl enter-mode grab;;
+esac
