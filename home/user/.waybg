@@ -1,0 +1,2 @@
+#!/bin/sh
+wbg "/home/void/.local/share/backgrounds/23.png" &
