@@ -1,0 +1,133 @@
+{
+    "output": ["eDP-1"],
+    "spacing": 4,
+	// try to keep it 4px across the config
+    "height":25,
+    // "margin-left": 8,
+    // "margin-right": 8,
+    // "margin-top": 8,
+    // "margin-radius": 8,
+    "layer": "top",
+    "modules-left": ["custom/menu", "river/tags", "river/mode"],
+    "modules-center": ["river/window"],
+    "modules-right": ["custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "custom/alsa", "clock", "custom/session"],
+    "battery": {
+        "format": "{icon} {capacity}% ",
+	"interval": 10,
+    },
+   
+	"custom/menu": {
+        "format": "             ",
+        //"format": { font-size: 20px; background-image: url('/home/void/Documents/void_bg.png');},
+        "tooltip": false,
+        "on-click": "/home/void/.sh/wenu",
+        "on-click-middle": "/home/void/.sh/Terminal",
+        "on-click-right": "pkill wofi",
+    },
+
+    "river/tags": {
+        "num-tags": 7,
+	"tag-labels": ["  Main  ","  Web  ","  Net  ","  Doc  ","  Term  ","  Media  ","  Desk  "], 
+     },
+
+
+     "river/mode": {
+     "format": " {} ",
+     "on-scroll-up": "riverctl swap previous",
+     "on-scroll-down": "riverctl swap next",
+     "on-click-middle": "riverctl toggle-float",
+     "on-click-right": "pkill wofi",
+     "on-click": "mode_switch",
+     },
+
+     "river/window":{
+     "on-click-middle": "riverctl close",
+     "on-scroll-up": "riverctl focus-view previous",
+     "on-scroll-down": "riverctl focus-view next",
+     "on-click": "top_level_mgr",
+     "on-click-right": "move_top_level_to",
+     "max-length": 100,
+     "width" : 0,
+     },
+
+     // "network": {
+     // "interface": "wlp2s0",
+     // "format": "{ifname}",
+     // "format-wifi": " {bandwidthDownBytes}    {bandwidthUpBytes}",
+     // "max-length": 50,
+     // "interval": 1,
+     // },
+
+     "network#net1": {
+     // "interface": "wlp2s0",
+     "format": "{ifname}",
+     "format-wifi": " {signalStrength}%",
+     "format-ethernet": " {ifname} ",
+     "format-disconnected": "", //An empty format will hide the module.
+     "format-disconnected": "",
+     "tooltip-format": "{ifname}",
+     "tooltip-format-wifi": "  {essid} ({signalStrength}%)  ",
+     "tooltip-format-ethernet": " {ifname} ",
+     "tooltip-format-disconnected": "Disconnected",
+     "interval": 1,
+     "on-click": "foot -a SmartTerm nm-tui"
+     },
+
+    "clock": {
+        // "timezone": "America/Sao_Paulo",
+        "tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%H:%M}",
+        "format-alt": " {:%d/%m/%Y}",
+	"interval": 1,
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "on-click": "lxtask",
+	"interval": 1,
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "on-click": "lxtask",
+	"interval": 1,
+    },
+
+    "battery": {
+	"bat": "BAT0",
+        "format": " {capacity}%",
+	"interval": 1,
+    },
+
+    "battery#bat1": {
+	"bat": "BAT1",
+        "format": " {capacity}%",
+	"interval": 1,
+    },
+
+    "custom/alsa": {
+        "exec": "echo  `vol`",
+        "on-click": "Amixer",
+        "on-scroll-up": "amixer set Master 1+; pkill -x -RTMIN+11 waybar",
+        "on-scroll-down": "amixer set Master 1-; pkill -x -RTMIN+11 waybar",
+        "signal": 11,
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "custom/keys": {
+        "exec": "keyboardstatus",
+        "on-click": "layout_mgr",
+        "on-click-right": "pkill wofi",
+        "signal": 11,
+        "interval": 1,
+        "tooltip": false
+    },
+
+	"custom/session": {
+        "format": "  ⏻  ",
+        "tooltip": false,
+        "on-click": "wsession",
+        "on-click-right": "pkill wofi",
+    },
+}
