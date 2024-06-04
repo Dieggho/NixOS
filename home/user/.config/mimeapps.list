@@ -1,0 +1,62 @@
+[Default Applications]
+inode/directory=pcmanfm.desktop
+video/webm=Video.desktop;
+image/png=userapp-View-LPTTI2.desktop
+image/jpeg=userapp-View-LPTTI2.desktop
+image/webp=userapp-gimp-I6ORO2.desktop
+x-scheme-handler/http=userapp-Firefox-O1DFI2.desktop
+x-scheme-handler/https=userapp-Firefox-O1DFI2.desktop
+x-scheme-handler/chrome=userapp-Firefox-O1DFI2.desktop
+text/html=userapp-Firefox-O1DFI2.desktop
+application/x-extension-htm=userapp-Firefox-O1DFI2.desktop
+application/x-extension-html=userapp-Firefox-O1DFI2.desktop
+application/x-extension-shtml=userapp-Firefox-O1DFI2.desktop
+application/xhtml+xml=userapp-Firefox-O1DFI2.desktop
+application/x-extension-xhtml=userapp-Firefox-O1DFI2.desktop
+application/x-extension-xht=userapp-Firefox-O1DFI2.desktop
+video/mp2t=Video.desktop
+audio/mpeg=userapp-VLC-U9UXI2.desktop
+application/vnd.debian.binary-package=userapp-un7z-SS3CG2.desktop
+application/x-bittorrent=userapp-Transmission &F-DJEFL2.desktop
+video/x-matroska=userapp-Video-6RN4M2.desktop
+x-scheme-handler/tg=org.telegram.desktop.desktop
+
+[Added Associations]
+inode/directory=userapp-View-TASWI2.desktop;userapp-Qview-5I84H2.desktop;View.desktop;deadbeef.desktop;
+video/webm=userapp-conv2mp3-SN5TO2.desktop;userapp-conv2mp3-7NPGO2.desktop;userapp-conv2mp3-FVQUO2.desktop;Video.desktop;
+image/png=userapp-View-LPTTI2.desktop;org.geeqie.Geeqie.desktop;Gimp.desktop;userapp-pinta-SUVXN2.desktop;userapp-SetAsWallpaper-EA55I2.desktop;userapp-View-VOE9I2.desktop;userapp-SetAsWallpaper-4C4LI2.desktop;userapp-SetAsWallpaper-6TEFI2.desktop;userapp-wbg-CYM0H2.desktop;
+image/jpeg=userapp-Gimp-1MRUO2.desktop;userapp-Gimp-WKB9N2.desktop;userapp-View-LPTTI2.desktop;userapp-pinta-SUVXN2.desktop;org.geeqie.Geeqie.desktop;userapp-View-MIZ1I2.desktop;userapp-Qview-5I84H2.desktop;userapp-SetAsWallpaper-D1MDI2.desktop;userapp-wbg-5E8II2.desktop;
+image/svg=userapp-View-LPTTI2.desktop;userapp-View-MIZ1I2.desktop;userapp-Qview-5I84H2.desktop;userapp-SetAsWallpaper-D1MDI2.desktop;userapp-wbg-5E8II2.desktop;
+application/x-compressed-tar=userapp-untar-NEEVG2.desktop;
+image/webp=userapp-gimp-I6ORO2.desktop;userapp-pinta-SUVXN2.desktop;userapp-View-LPTTI2.desktop;userapp-SetAsWallpaper-EA55I2.desktop;
+x-scheme-handler/http=userapp-Firefox-O1DFI2.desktop;
+x-scheme-handler/https=userapp-Firefox-O1DFI2.desktop;
+x-scheme-handler/chrome=userapp-Firefox-O1DFI2.desktop;
+text/html=userapp-Firefox-O1DFI2.desktop;
+application/x-extension-htm=userapp-Firefox-O1DFI2.desktop;
+application/x-extension-html=userapp-Firefox-O1DFI2.desktop;
+application/x-extension-shtml=userapp-Firefox-O1DFI2.desktop;
+application/xhtml+xml=userapp-Firefox-O1DFI2.desktop;
+application/x-extension-xhtml=userapp-Firefox-O1DFI2.desktop;
+application/x-extension-xht=userapp-Firefox-O1DFI2.desktop;
+video/mp2t=Video.desktop;
+application/x-bzip2-compressed-tar=userapp-untar-JC0NG2.desktop;
+audio/mpeg=deadbeef.desktop;
+image/x-xcursor=userapp-pinta-SUVXN2.desktop;
+application/vnd.debian.binary-package=userapp-un7z-SS3CG2.desktop;userapp-untar-JC0NG2.desktop;
+application/x-tar=userapp-untar-JC0NG2.desktop;
+image/svg+xml=userapp-View-LPTTI2.desktop;userapp-View-LPTTI2.desktop;
+application/x-bittorrent=userapp-Transmission &F-DJEFL2.desktop;
+video/x-matroska=userapp-Video-6RN4M2.desktop;
+x-scheme-handler/tg=org.telegram.desktop.desktop;
+
+[Removed Associations]
+video/webm=firefox.desktop;
+application/x-compressed-tar=userapp-Untar-DKIBH2.desktop;
+image/png=qView.desktop;imv.desktop;imv-dir.desktop;firefox.desktop;
+image/jpeg=qView.desktop;imv.desktop;imv-dir.desktop;firefox.desktop;
+image/jpg=qView.desktop;imv.desktop;imv-dir.desktop;firefox.desktop;
+audio/mpeg=userapp-VLC-HK62I2.desktop;
+text/plain=leafpad.desktop
+application/atom+xml=leafpad.desktop;firefox.desktop;
+application/x-bittorrent=userapp-Transmission-BW3CL2.desktop;userapp-Transmission-SYAOL2.desktop;
