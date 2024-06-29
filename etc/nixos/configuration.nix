@@ -15,7 +15,7 @@
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "t480"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -24,6 +24,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+
+  # Enable nix-command and flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];  
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -61,7 +65,7 @@
   };
 
   environment.etc."greetd/environments".text = ''
-    Hyprland
+    HYPRLAND
   '';
 
   services.logind.lidSwitchExternalPower = "ignore";
@@ -72,7 +76,7 @@
   users.users.void = {
     isNormalUser = true;
     description = "void";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "optical"];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "optical" "input"];
     packages = with pkgs; [
     ];
   };
@@ -94,9 +98,15 @@
   # Enable packages
   programs.firefox.enable = true;
   programs.udevil.enable = true;
-  programs.hyprland.enable = true;
   programs.waybar.enable = true;
   programs.regreet.enable = true;
+
+  programs.hyprland = {
+  enable = true;
+  xwayland.enable = false;
+  }; 
+
+  # Default shell
   users.defaultUserShell = pkgs.mksh;
 
   # Intel configuration
@@ -116,8 +126,8 @@
   #  wget
   alsa-utils
   cage
-  deadbeef-with-plugins
   dunst
+  deadbeef
   wbg
   greetd.gtkgreet
   wofi
@@ -128,24 +138,22 @@
   simple-mtpfs
   gnome.dconf-editor
   galculator
-  pcmanfm
   lxtask
   imv
   grim
   slurp
-  leafpad
   gucharmap
   ffmpeg-full
-  gimp
+  pinta
   transmission
   telegram-desktop
   unzip
   p7zip
   dash
+  pcmanfm
   python3
   plymouth
   swaylock
-  vim
   ];
 
   # Set session environment
@@ -190,3 +198,4 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 }
 
+# Edit this configuration file to define what should be installed on
