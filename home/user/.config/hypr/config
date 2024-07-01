@@ -20,7 +20,7 @@
         "format": "               ",
         "tooltip": false,
         "on-click": "sleep 0.1 && /home/void/.sh/wenu",
-        "on-click-middle": "sleep 0.1 && /home/void/.sh/Terminal",
+        "on-click-middle": "sleep 0.1 && foot",
         "on-click-right": "pkill wofi",
     },
 
@@ -73,7 +73,7 @@
      "tooltip-format-ethernet": "",
      "tooltip-format-disconnected": "Disconnected",
      "interval": 1,
-     "on-click": "foot -a SmartTerm nm-tui"
+     "on-click": "foot -a SmartTerm -e nm-tui"
      },
 
     "clock": {
