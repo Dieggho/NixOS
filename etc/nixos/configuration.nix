@@ -48,10 +48,10 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
+  # services.xserver = {
+  #  xkb.layout = "us";
+  #  xkb.variant = "";
+  #};
 
   # Enable services
   services.greetd = {
@@ -128,7 +128,7 @@
   cage
   dunst
   deadbeef
-  wbg
+  swww
   greetd.gtkgreet
   wofi
   foot
