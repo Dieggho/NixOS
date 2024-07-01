@@ -21,16 +21,16 @@ bind ^[e=end-of-line
 bind ^L=clear-screen
 
 alias \
- shrc="vim ~/.mkshrc" \
+ shrc="nano ~/.mkshrc" \
  myip="curl ident.me;echo" \
  weather="curl -4 http://wttr.in/Sao-Paulo" \
  mynix="clear; neofetch ; echo; lsblk /dev/nvme0n1;" \
- nixed="doas vim /etc/nixos/configuration.nix" \
- nixup="doas nix-channel --update;doas nixos-rebuild switch" \
+ nixed="doas nano /etc/nixos/configuration.nix" \
+ nixup="doas nixos-rebuild switch --upgrade" \
  nixrm="doas nix-collect-garbage --delete-old;doas /run/current-system/bin/switch-to-configuration boot" \
  nixs="nix-env -qaP" \
  nixlsg="doas nix-env --list-generations --profile /nix/var/nix/profiles/system" \
- hyprc="vi .config/hypr/hyprland.conf"
+ hyprc="nano .config/hypr/hyprland.conf"
 
 lss () {
         du -hc "$1" | sort -rh | head -20

@@ -1,0 +1,30 @@
+# colors
+# nano 5.4 color declarations:
+# red, green, blue, magenta, yellow, cyan, white, black, and normal
+# 256 color terminals may also allow:
+# pink, purple, mauve, lagoon, mint, lime, peach, orange, latte
+# bold and italic supported
+#set titlecolor lightwhite,yellow
+#set keycolor italic,white,blue
+#set functioncolor normal,normal
+#set numbercolor italic,white,magenta
+#set errorcolor lightwhite,red
+#set scrollercolor green,white
+#set selectedcolor black,white
+#set stripecolor black,white
+#set statuscolor black,white
+
+# nano 5.8 color declarations:
+# white, black, blue, green, red,  cyan,  yellow, magenta, and normal
+# The name of the foreground color may be prefixed with bright.
+# bold and italic not supported
+set titlecolor brightwhite,blue
+set keycolor white,blue
+set functioncolor normal,normal
+set numbercolor white,blue
+set errorcolor brightwhite,red
+set selectedcolor white,blue
+set stripecolor black,white
+set statuscolor black,white
+set numbercolor brightwhite
+set linenumbers

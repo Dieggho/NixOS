@@ -41,12 +41,11 @@ unset TERMCAP
 unset MANPATH
 
 
-export EDITOR=vi
+export EDITOR=nano
 export LANG=en_US.UTF-8
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_PLATFORMTHEME=qt5ct
 export QT_PLATFORM_PLUGIN=qt5ct
-#export XDG_RUNTIME_DIR=/run/user/"$(id -u)"
 
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.sh
