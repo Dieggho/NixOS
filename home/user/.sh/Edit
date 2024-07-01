@@ -1,3 +1,2 @@
-#!/usr/bin/env dash
-chtag 4
-leafpad "$@"
+#!/usr/bin/env dash 
+foot -a Nano -e nano "$@"

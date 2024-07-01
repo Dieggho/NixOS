@@ -6,10 +6,12 @@ export QEMU_ALSA_DAC_PERIOD_SIZE=128
 cage -d -s -- \
 qemu-system-x86_64 \
 -m 4G \
-#-bios /usr/share/edk2/x64/OVMF.fd \
 -vga virtio \
 -enable-kvm \
 -cpu host \
 -smp 4 \
 -audio driver=sdl,model=virtio \
 $@
+
+
+#-bios /usr/share/edk2/x64/OVMF.fd \

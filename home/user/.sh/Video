@@ -1,3 +1,2 @@
 #!/usr/bin/env dash
-chtag 6
 ffplay -loop 999 "$@"

@@ -1,3 +1,2 @@
 #!/usr/bin/env dash
-chtag 3
-foot transmission-cli "$@"
+foot -a transmission -e transmission-cli "$@"

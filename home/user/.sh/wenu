@@ -8,21 +8,21 @@ case $selected in
   file)
     pcmanfm;;
   deadbeef)
-    chtag 1; deadbeef;;
+    deadbeef;;
   telegram)
-    chtag 1; telegram;;
+    telegram;;
   firefox)
-    chtag 2; firefox;;
+    firefox;;
   editor)
-    chtag 4; leafpad;;
+    foot -a Nano -e nano;;
   calculator)
     galculator;;
   gucharmap)
-    chtag 4; gucharmap;;
+    gucharmap;;
   gtk-theme)
-    chtag 7; dconf-editor;;
+    dconf-editor;;
   wallpapers)
     wallpaper;;
   terminal)
-    chtag 5; foot;;
+    foot;;
 esac
