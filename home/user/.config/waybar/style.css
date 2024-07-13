@@ -197,6 +197,7 @@ window#waybar.empty #window {
 #custom-alsa,
 #custom-keys,
 #wlr-taskbar,
+#pulseaudio,
 #tray
 {
   background: @colbg2; 
