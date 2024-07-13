@@ -25,6 +25,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
 
   # Enable nix-command and flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];  
@@ -69,8 +73,11 @@
   '';
 
   services.logind.lidSwitchExternalPower = "ignore";
-  sound.enable = true;
   zramSwap.enable = true;
+
+  # Sound
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.void = {
@@ -81,19 +88,19 @@
     ];
   };
 
-  # Allow unfree packages
+ # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enable doas instead of sudo
-  security.doas.enable = true;
-  security.sudo.enable = false;
+  # security.doas.enable = true;
+  # security.sudo.enable = false;
 
   # Configure doas
-  security.doas.extraRules = [{
-	users = [ "void" ];
-	keepEnv = true;
-        persist = true;
-  }];
+  # security.doas.extraRules = [{
+  #	users = [ "void" ];
+  #	keepEnv = true;
+  #     persist = true;
+  #}];
 
   # Enable packages
   programs.firefox.enable = true;
@@ -107,7 +114,7 @@
   }; 
 
   # Default shell
-  users.defaultUserShell = pkgs.mksh;
+  # users.defaultUserShell = pkgs.mksh;
 
   # Intel configuration
   hardware.opengl = {
@@ -124,11 +131,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  alsa-utils
   cage
   dunst
   deadbeef
   swww
+  fastfetch
   greetd.gtkgreet
   wofi
   foot
@@ -150,6 +157,7 @@
   unzip
   p7zip
   dash
+  pavucontrol
   pcmanfm
   python3
   plymouth
