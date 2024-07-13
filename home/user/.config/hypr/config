@@ -10,7 +10,7 @@
     "layer": "top",
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "custom/alsa", "clock", "custom/session"],
+    "modules-right": ["custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "pulseaudio", "clock", "custom/session"],
     "battery": {
         "format": "{icon} {capacity}% ",
 	"interval": 10,
@@ -109,13 +109,31 @@
     },
 
     "custom/alsa": {
-        "exec": "echo  `vol`",
-        "on-click": "Amixer",
-        "on-scroll-up": "amixer set Master 1+; pkill -x -RTMIN+11 waybar",
-        "on-scroll-down": "amixer set Master 1-; pkill -x -RTMIN+11 waybar",
+        "exec": "echo  `vol`%",
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume $SINK +1%; pkill -x -RTMIN+11 waybar",
+        "on-scroll-down": "pactl set-sink-volume $SINK -1%; pkill -x -RTMIN+11 waybar",
         "signal": 11,
         "interval": 1,
         "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+             "headphones": "",
+             "handsfree": "",
+             "headset": "",
+             "phone": "",
+             "portable": "",
+             "car": "",
+             "default": ["", ""]
+            },               
+         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%; pkill -x -RTMIN+11 waybar",
+         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%; pkill -x -RTMIN+11 waybar",
+         "on-click": "pavucontrol",
     },
 
     "custom/keys": {
