@@ -1,7 +1,7 @@
 /*colors*/
 /* Dracula */
 
-@define-color colbg       #1A1E22;
+@define-color colbg       #181A20;
 @define-color colbg2      #111417;
 @define-color colfg3      #dddddd;
 @define-color colgrey     #22282E;
@@ -196,6 +196,7 @@ window#waybar.empty #window {
 #network,
 #custom-alsa,
 #custom-keys,
+#custom-grab,
 #wlr-taskbar,
 #pulseaudio,
 #tray
