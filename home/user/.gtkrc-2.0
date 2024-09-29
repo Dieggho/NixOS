@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/void/.gtkrc-2.0.mine"
-gtk-theme-name="Bubble-Dark"
-gtk-icon-theme-name="Breeze-Blue-Dark"
+gtk-theme-name="Skeuos-Blue-Dark"
+gtk-icon-theme-name="Flat-Remix-Blue"
 gtk-font-name="Sans 10"
 gtk-cursor-theme-name="Sunity-cursors"
 gtk-cursor-theme-size=24
