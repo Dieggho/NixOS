@@ -10,7 +10,7 @@
     "layer": "top",
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "pulseaudio", "clock", "custom/session"],
+    "modules-right": ["custom/grab", "custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "pulseaudio", "clock", "custom/session"],
     "battery": {
         "format": "{icon} {capacity}% ",
 	"interval": 10,
@@ -131,9 +131,9 @@
              "car": "",
              "default": ["", ""]
             },               
-         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%; pkill -x -RTMIN+11 waybar",
-         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%; pkill -x -RTMIN+11 waybar",
-         "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%; pkill -x -RTMIN+11 waybar",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%; pkill -x -RTMIN+11 waybar",
+        "on-click": "pavucontrol",
     },
 
     "custom/keys": {
@@ -143,6 +143,15 @@
         "signal": 11,
         "interval": 1,
         "tooltip": false
+    },
+
+	"custom/grab": {
+        "exec": "grabstatus",
+        "tooltip": false,
+        "on-click": "grab unbind",
+        "on-click-right": "grab bindm",
+        "signal": 11,
+        "interval": 1,
     },
 
 	"custom/session": {
