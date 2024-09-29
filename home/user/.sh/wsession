@@ -4,7 +4,7 @@ pkill wofi
 
 entries=" Logout\n⏾ Suspend\n Lock\n Reboot\n Shutdown"
 
-selected=$(echo $entries|wofi -x 1712 --width 1 --height 240 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 1710 --width 1 --height 270 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
 
 case $selected in
   logout)

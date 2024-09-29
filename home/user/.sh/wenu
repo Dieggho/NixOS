@@ -1,8 +1,8 @@
 #!/usr/bin/env dash
 pkill wofi
-entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Wallpapers\n Terminal"
+entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal"
 
-selected=$(echo $entries|wofi -x 0 --width 240 --height 418 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 0 --width 250 --height 470 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
 
 case $selected in
   file)
@@ -10,19 +10,21 @@ case $selected in
   deadbeef)
     deadbeef;;
   telegram)
-    telegram;;
+    hyprctl dispatch workspace 1; telegram-desktop;;
   firefox)
     firefox;;
   editor)
-    foot -a Nano -e nano;;
+    Edit;;
   calculator)
     galculator;;
   gucharmap)
     gucharmap;;
   gtk-theme)
     dconf-editor;;
+  blueman)
+    blueman-manager;;
   wallpapers)
-    wallpaper;;
+    waypaper;;
   terminal)
     foot;;
 esac

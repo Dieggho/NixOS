@@ -1,2 +1,2 @@
 #!/usr/bin/env dash
-wf-recorder --file "/home/void/Videos/$(date).mp4"
+wf-recorder -a --file "/home/void/Videos/$(date).mp4"

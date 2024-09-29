@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+on() {
+cat << EOF > /home/void/.sh/grabstatus
+#!/bin/sh
+echo 
+EOF
+hyprctl keyword bindm ,mouse:273,movewindow
+}
+
+off() {
+cat << EOF > /home/void/.sh/grabstatus
+#!/bin/sh
+echo 
+EOF
+hyprctl keyword unbind ,mouse:273,movewindow
+}
+
+
+case "$@" in
+  bindm)
+	on;;
+  unbind)
+	off;;
+esac
