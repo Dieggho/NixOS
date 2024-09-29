@@ -1,3 +1,4 @@
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -62,7 +63,7 @@
     enable = true;
     settings = {
       default_session = {
-       command = "${pkgs.cage}/bin/cage -d -s -- gtkgreet -b /home/void/.local/share/backgrounds/nixos.png";
+       command = "${pkgs.cage}/bin/cage -d -s -- gtkgreet -b /home/void/.local/share/backgrounds/NixOS.png";
        user = "void";
       };
     };
@@ -134,7 +135,6 @@
   #  wget
   cage
   dunst
-  deadbeef
   swww
   fastfetch
   greetd.gtkgreet
@@ -154,7 +154,7 @@
   ffmpeg-full
   pinta
   transmission
-  telegram-desktop
+  unrar
   unzip
   p7zip
   dash
@@ -163,6 +163,9 @@
   python3
   plymouth
   swaylock
+  waypaper
+  deadbeef
+  telegram-desktop
   ];
 
   # Set session environment
