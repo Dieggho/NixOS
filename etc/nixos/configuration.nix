@@ -86,7 +86,8 @@
     description = "void";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "optical" "input"];
     packages = with pkgs; [
-	flat-remix-gtk
+	hyprlandPlugins.hyprbars
+ 	flat-remix-gtk
 	flat-remix-icon-theme
     ];
   };
