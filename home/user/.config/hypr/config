@@ -10,7 +10,7 @@
     "layer": "top",
     "modules-left": ["custom/menu", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/grab", "custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "pulseaudio", "clock", "custom/session"],
+    "modules-right": ["custom/keys", "cpu", "memory", "battery", "battery#bat1", "network#net1", "pulseaudio", "clock", "custom/session"],
     "battery": {
         "format": "{icon} {capacity}% ",
 	"interval": 10,
