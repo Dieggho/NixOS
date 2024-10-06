@@ -1,0 +1,3 @@
+#!/usr/bin/env dash
+#hyprctl plugin load $(find /nix/store/ -type d -name '*hyprbars*')/lib/libhyprbars.so
+hyprctl plugin load /home/void/.config/hypr/libhyprbars.so

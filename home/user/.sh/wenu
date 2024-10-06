@@ -1,8 +1,8 @@
 #!/usr/bin/env dash
 pkill wofi
-entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal"
+entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal\n SmartTerminal"
 
-selected=$(echo $entries|wofi -x 0 --width 250 --height 470 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 0 --width 250 --height 510 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
 
 case $selected in
   file)
@@ -27,4 +27,6 @@ case $selected in
     waypaper;;
   terminal)
     foot;;
+  smartterminal)
+    foot -a SmartTerm;;
 esac

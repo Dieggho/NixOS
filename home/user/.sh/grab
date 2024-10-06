@@ -2,7 +2,7 @@
 
 on() {
 cat << EOF > /home/void/.sh/grabstatus
-#!/bin/sh
+#!/usr/bin/env dash
 echo 
 EOF
 hyprctl keyword bindm ,mouse:273,movewindow
@@ -10,7 +10,7 @@ hyprctl keyword bindm ,mouse:273,movewindow
 
 off() {
 cat << EOF > /home/void/.sh/grabstatus
-#!/bin/sh
+#!/usr/bin/env dash
 echo 
 EOF
 hyprctl keyword unbind ,mouse:273,movewindow
