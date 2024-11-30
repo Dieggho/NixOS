@@ -19,6 +19,9 @@
   networking.hostName = "t480"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  # You can choose your kernel simply by setting the boot.kernelPackages option 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -52,12 +55,6 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  # Configure keymap in X11
-  # services.xserver = {
-  #  xkb.layout = "us";
-  #  xkb.variant = "";
-  #};
-
   # Enable services
   services.greetd = {
     enable = true;
@@ -70,15 +67,11 @@
   };
 
   environment.etc."greetd/environments".text = ''
-    HYPRLAND
+    Hyprland
   '';
 
   services.logind.lidSwitchExternalPower = "ignore";
   zramSwap.enable = true;
-
-  # Sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.void = {
@@ -86,9 +79,9 @@
     description = "void";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "storage" "optical" "input"];
     packages = with pkgs; [
-	hyprlandPlugins.hyprbars
- 	flat-remix-gtk
-	flat-remix-icon-theme
+        hyprlandPlugins.hyprbars
+        flat-remix-gtk
+        flat-remix-icon-theme
     ];
   };
 
@@ -114,20 +107,17 @@
 
   programs.hyprland = {
   enable = true;
-  xwayland.enable = false;
   }; 
 
   # Default shell
   # users.defaultUserShell = pkgs.mksh;
 
   # Intel configuration
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      onevpl-intel-gpu
+      vpl-gpu-rt
     ];
   };
 
@@ -136,10 +126,13 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+  audacity
   cage
   dunst
+  deadbeef
   swww
   fastfetch
+  gsimplecal
   greetd.gtkgreet
   wofi
   foot
@@ -147,7 +140,7 @@
   hyprpicker
   libnotify
   simple-mtpfs
-  gnome.dconf-editor
+  dconf-editor
   galculator
   lxtask
   imv
@@ -155,9 +148,9 @@
   slurp
   gucharmap
   ffmpeg-full
-  pinta
-  transmission
-  unrar
+  gimp
+  transmission_3
+  telegram-desktop
   unzip
   p7zip
   dash
@@ -167,8 +160,8 @@
   plymouth
   swaylock
   waypaper
-  deadbeef
-  telegram-desktop
+  xfce.mousepad
+  shotcut
   ];
 
   # Set session environment
@@ -183,6 +176,22 @@
     PATH = [ 
       "${XDG_BIN_HOME}"
     ];
+  };
+
+  programs.bash.shellAliases = {
+  ls = "ls --color=auto";
+  myip = "curl ident.me;echo";
+  weather = "curl -4 http://wttr.in/Sao-Paulo";
+  mynix = "clear; fastfetch; lsblk -f;";
+  nixed = "sudo nano /etc/nixos/configuration.nix";
+  nixup = "sudo nixos-rebuild switch --upgrade";
+  nixrm = "sudo nix-collect-garbage --delete-old;sudo /run/current-system/bin/switch-to-configuration boot";
+  nixs = "nix-env -qaP";
+  nixsh = "nix-shell -p";
+  nixr = "nix-collect-garbage";
+  nixlsg = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+  hyprc = "nano /home/void/.config/hypr/hyprland.conf";
+  Nix = "clear ; fastfetch";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -210,7 +219,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
-
-# Edit this configuration file to define what should be installed on
