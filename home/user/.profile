@@ -40,19 +40,24 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
+unset HISTFILE
 
-export EDITOR=nano
+export EDITOR=vi
 export LANG=en_US.UTF-8
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_PLATFORMTHEME=qt5ct
 export QT_PLATFORM_PLUGIN=qt5ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.sh
+export ENV="$HOME/.shrc"
+export HISTFILE=/dev/null
+
 
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
-export XDG_CURRENT_DESKTOP=wlroots
+#export XDG_CURRENT_DESKTOP=Hyprland
 export QT_QPA_PLATFORM=wayland-egl
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
@@ -67,3 +72,5 @@ export XKB_DEFAULT_MODEL=thinkpad
 
 export LIBVA_DRIVER_NAME=iHD
 export NIXPKGS_ALLOW_UNFREE=1
+stty -ixon
+
