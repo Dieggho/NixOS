@@ -1,0 +1,5 @@
+#!/usr/bin/env dash
+nix-store --query --requisites /run/current-system/sw \
+  | sed 's|/nix/store/[a-z0-9]\{32\}-||' \
+  | sed 's/-[0-9].*$//' \
+  | sort | uniq

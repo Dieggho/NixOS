@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+sed -i s/bluesky.conf/arcdarkest.conf/ /home/void/.config/hypr/hyprland.conf
+sed -i s/gtk-application-prefer-dark-theme=0/gtk-application-prefer-dark-theme=1/ /home/void/.config/gtk-3.0/settings.ini
+sed -i s/lightBG/darkBG/ /home/void/.config/waytrogen/config.json
+sed -i s/light/dark/ /home/void/.sh/reloadwaybar
+sed -i s/light/dark/ /home/void/.sh/reloadwaybar
+sed -i s/BlueSky-Mountain-Solid/Arc-Darkest/ /home/void/.gtkrc-2.0
+cp /home/void/.local/share/Wallpapers/NixOS-Dark.png /home/void/.local/share/Wallpapers/000-NixOS.png
+cp /home/void/.config/foot/dark.ini /home/void/.config/foot/foot.ini
+gsettings set org.gnome.desktop.interface icon-theme Flat-Remix-Black-Dark &
+gsettings set org.gnome.desktop.interface gtk-theme Arc-Darkest &
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' &
+reloadwaybar &
+SetAsWallpaper /home/void/.local/share/Wallpapers/000-NixOS.png &
+

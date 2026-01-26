@@ -1,2 +1,3 @@
 #!/usr/bin/env dash
-echo  "br"
+clear
+ufetch-nixos

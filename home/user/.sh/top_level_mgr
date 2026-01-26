@@ -2,21 +2,17 @@
 
 pkill wofi
 
-entries=" Move-Up\n Move-Left\n Move-Right\n Move-Down\n Toggle-Float\n Close"
+entries=" Fullscreen\n Toggle-Float\n Close\nx"
 
-selected=$(echo $entries|wofi -x 830 --width 233 --height 300 --dmenu --cache-file /dev/null --prompt="Toplevel Manager"| awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 49 -y 792 --width 210 --height 155 --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
 
 case $selected in
-move-up)
-    hyprctl dispatch movewindow u;;
-move-left)
-    hyprctl dispatch movewindow l;;
-move-right)
-    hyprctl dispatch movewindow r;;
-move-down)
-    hyprctl dispatch movewindow d;;
+fullscreen)
+    hyprctl dispatch fullscreen;;
 toggle-float)
     hyprctl dispatch togglefloating;;
 close)
     hyprctl dispatch killactive;;
+   x)
+  pkill wofi;;
 esac

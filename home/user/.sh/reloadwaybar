@@ -1,3 +1,4 @@
 #!/usr/bin/env dash
 pkill waybar
-hyprctl dispatch exec 'waybar -c /home/void/.config/hypr/config'
+waybar -c /home/void/.config/hypr/waybar/lightwaybar.conf -s /home/void/.config/hypr/waybar/light.css 
+#waybar -c /home/void/.config/hypr/waybar/lightwaybar2.conf -s /home/void/.config/hypr/waybar/light.css &

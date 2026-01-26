@@ -1,2 +1,3 @@
 #!/usr/bin/env dash 
-foot -a Nano -e nano "$@"
+cd ~/Documents
+foot -a vi -e vi "$@"

@@ -1,32 +1,37 @@
 #!/usr/bin/env dash
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 pkill wofi
-entries=" File\n Deadbeef\n Telegram\n Firefox\n Editor\n Calculator\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal\n SmartTerminal"
+entries=" File\n Telegram\n Pragha\n Browser\n Editor\n Calculator\n DConf\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal\n SmartTerminal\nX"
 
-selected=$(echo $entries|wofi -x 0 --width 250 --height 510 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 0 --width 300 --height 490 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
 
 case $selected in
   file)
     pcmanfm;;
-  deadbeef)
-    deadbeef;;
+  pragha)
+    pragha;;
   telegram)
-    hyprctl dispatch workspace 1; telegram-desktop;;
-  firefox)
-    firefox;;
+    kotatogram-desktop;;
+  browser)
+   brave;;
   editor)
     Edit;;
   calculator)
     galculator;;
+  dconf)
+    dconf-editor;;
   gucharmap)
     gucharmap;;
   gtk-theme)
-    dconf-editor;;
+    nwg-look;;
   blueman)
     blueman-manager;;
   wallpapers)
-    waypaper;;
+    waytrogen;;
   terminal)
     foot;;
   smartterminal)
     foot -a SmartTerm;;
+   x)
+  pkill wofi;;
 esac

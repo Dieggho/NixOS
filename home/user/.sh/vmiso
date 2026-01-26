@@ -12,7 +12,7 @@ qemu-system-x86_64 \
 -smp 4 \
 -audio driver=sdl,model=virtio \
 --bios /home/void/Documents/VMs/OVMF_X64.fd \
-$@
+-cdrom $@
 
 
 #-bios /usr/share/edk2/x64/OVMF.fd \

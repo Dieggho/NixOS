@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env dash
 
 on() {
 cat << EOF > /home/void/.sh/grabstatus

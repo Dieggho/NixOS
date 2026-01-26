@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+sed -i s/arcdarkest.conf/bluesky.conf/ /home/void/.config/hypr/hyprland.conf
+sed -i s/gtk-application-prefer-dark-theme=1/gtk-application-prefer-dark-theme=0/ /home/void/.config/gtk-3.0/settings.ini
+sed -i s/darkBG/lightBG/ /home/void/.config/waytrogen/config.json
+sed -i s/dark/light/ /home/void/.sh/reloadwaybar
+sed -i s/dark/light/ /home/void/.sh/reloadwaybar
+sed -i s/Arc-Darkest/BlueSky-Mountain-Solid/ /home/void/.gtkrc-2.0
+cp /home/void/.local/share/Wallpapers/NixOS-Blue.png /home/void/.local/share/Wallpapers/000-NixOS.png
+cp /home/void/.config/foot/light.ini /home/void/.config/foot/foot.ini
+gsettings set org.gnome.desktop.interface icon-theme Adwaita &
+gsettings set org.gnome.desktop.interface gtk-theme BlueSky-Mountain-Solid &
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-light' &
+reloadwaybar &
+SetAsWallpaper /home/void/.local/share/Wallpapers/000-NixOS.png &
+

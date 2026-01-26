@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env dash
 rsync -aAXv / --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/cdrom/*,/home/void/Documents/*,/home/void/Downloads/*,/home/void/Music/*,/home/void/Videos/*}  /mnt/

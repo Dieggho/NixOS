@@ -2,19 +2,21 @@
 
 pkill wofi
 
-entries=" Logout\n⏾ Suspend\n Lock\n Reboot\n Shutdown"
+entries=" Logout\n⏾ Suspend\n Lock\n Reboot\n Shutdown\nX"
 
-selected=$(echo $entries|wofi -x 1710 --width 1 --height 270 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
+selected=$(echo $entries|wofi -x 1710 --width 1 --height 220 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
 
 case $selected in
   logout)
     logoff;;
   suspend)
-    systemctl suspend;;
+    sleep 0.3 ; systemctl suspend;;
   lock)
-    lock;;
+   sleep 0.3 ; lock;;
   reboot)
     reboot;;
   shutdown)
     poweroff;;
+ x)
+  pkill wofi;;
 esac

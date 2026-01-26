@@ -1,2 +1,2 @@
 #!/usr/bin/env dash
-imv-wayland -b 1A1E22 -c toggle_playing -l -r "$@"
+imv-wayland -c toggle_playing -l -r "$@"

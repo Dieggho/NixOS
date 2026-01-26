@@ -1,0 +1,16 @@
+#!/usr/bin/env dash
+
+pkill wofi
+
+entries=" Light\n⏾ Dark\nX"
+
+selected=$(echo $entries|wofi -x 1710 --width 1 --height 120 --dmenu --cache-file /dev/null --prompt="Light Switch"| awk '{print tolower($2)}')
+
+case $selected in
+  light)
+    -bluesky;;
+  dark)
+    -arcdarkest;;
+ x)
+  pkill wofi;;
+esac

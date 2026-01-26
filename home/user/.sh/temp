@@ -1,7 +1,8 @@
 #!/usr/bin/env dash
 while true
 do
-clear
-sensors
-sleep 0.5
-done
+ clear
+ sensors | grep °C
+ sleep 0.5
+done 
+

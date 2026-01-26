@@ -1,9 +1,9 @@
 #!/usr/bin/env dash
 pkill wofi
+hyprctl dispatch fullscreen 1
+entries=" Main\n Web\n Net\n Doc\n Term\n Media\n Desk\nX"
 
-entries=" Main\n Web\n Net\n Doc\n Term\n Media\n Desk"
-
-selected=$(echo $entries|wofi -x 830 --width 240 --height 335 --dmenu --cache-file /dev/null --prompt="Move Toplevel To Tag.."| awk '{print tolower($2)}')
+selected=$(echo $entries|wofi --width 240 --height 300 --dmenu --cache-file /dev/null --prompt="Move Toplevel To Tag.."| awk '{print tolower($2)}')
 
 case $selected in
 main)
@@ -20,4 +20,7 @@ media)
     hyprctl dispatch movetoworkspace 6;;
 desk)
     hyprctl dispatch movetoworkspace 7;;
+x)
+  pkill wofi;;
 esac
+hyprctl dispatch fullscreen 1

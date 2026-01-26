@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+curl -4 http://wttr.in/
