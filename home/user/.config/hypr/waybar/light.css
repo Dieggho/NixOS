@@ -1,22 +1,21 @@
 /*colors*/
 
-@define-color colbg       #181A20;
-@define-color colbg1      #14171B;
-@define-color colbg2      #111417;
-@define-color colbg3      rgba(24,26,32, 0.8);
-@define-color colbg4      rgba(0,0,0, 0.1);
-@define-color colbg5      rgba(17,20,23, 1);
-@define-color colfg       #dddddd;
-@define-color colfg3      #dddddd;
-@define-color colgrey     #22282E;
-@define-color colcyan     #8be9fd;
-@define-color colgreen    #0C8B72;
-@define-color colorange   #ffb86c;
-@define-color colmagenta  #ff79c6;
-@define-color colviolet   #bd93f9;
-@define-color colred      #ff5555;
-@define-color colyellow   #f1fa8c;
-@define-color shadowbar   #22252E;
+@define-color colbg        #D3DAE3;
+@define-color colbg1       #CCD2DC;
+@define-color colbg2       #C2C5CE;
+@define-color colbg4       rgba(0,0,0, 0.1);
+@define-color colbg5       #777777;
+@define-color colfg        #555555;
+@define-color colfg3       #eeeeee;
+@define-color colgrey      #bfc3cb;
+@define-color colcyan      #80cbc4;
+@define-color colgreen     #c3e88d;
+@define-color colorange    #f78c6c;
+@define-color colmagenta   #c792ea;
+@define-color colviolet    #bb80b3;
+@define-color colred       #ff5370;
+@define-color colyellow    #ffcb6b;
+@define-color shadowbar    #CCD2DC;
 
 
 * {
@@ -43,7 +42,7 @@ window#waybar {
     transition-property: background-color;
     transition-duration: .1s;
     border: 1px solid @colbg5;
-    box-shadow: 0 0 0 0.8px @shadowbar inset; /* external glow for consistency */
+    box-shadow: 0 0 0 1px @shadowbar inset; /* external glow for consistency */
     /*border: 0.7px solid @colbg5;*/
     /* opacity: 1.0;  */
 }
