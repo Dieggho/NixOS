@@ -11,34 +11,17 @@
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
-  # Hardening
-  boot.kernel.sysctl = {
-  "kernel.randomize_va_space" = 2;
-  "vm.mmap_rnd_bits" = 32;
-  "vm.mmap_rnd_compat_bits" = 16;
-  };
-
-  nixpkgs.config.hardening = {
-  enable = true;
-  pie = true;
-  relro = "full";
-  now = true;
-  stackprotector = true;
-  fortify = true;
-  };
-
-  security.apparmor.enable = true;
 
   # Enable Wifi
-  networking.hostName = "t480"; # Define your hostname.
+  networking.hostName = "X1-Carbon"; # Define your hostname.
   networking.wireless.iwd.enable = true;
+  networking.networkmanager.enable = false;
  
   # You can choose your kernel simply by setting the boot.kernelPackages option 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages;
   
   # ThinkPad battery + power
-  services.tlp = {
+   services.tlp = {
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_BAT="powersave";
@@ -47,6 +30,8 @@
       CPU_ENERGY_PERF_POLICY_ON_AC="performance";
       PLATFORM_PROFILE_ON_BAT="low-power";
       PLATFORM_PROFILE_ON_AC="performance";
+      CPU_MAX_PERF_ON_AC = 50;
+      CPU_MAX_PERF_ON_BAT = 50;
     };
   };
 
@@ -54,9 +39,9 @@
   services.xserver.enable = false;
 
   # Enable Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true;
+  hardware.bluetooth.enable = false; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = false; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = false;
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -89,7 +74,7 @@
   };
 
   environment.etc."greetd/environments".text = ''
-    Hyprland
+  start-hyprland
   '';
 
    services.logind.settings.Login = {
@@ -133,6 +118,14 @@
     enable = true;
   }; 
 
+xdg.portal = {
+  enable = true;
+  extraPortals = with pkgs; [
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+  ];
+};
+
   # Default shell
   users.defaultUserShell = pkgs.mksh;
   
@@ -148,52 +141,51 @@
     ];
   };
 
-  # Remove defalt packages
-  programs.nano.enable = false;
-  programs.xwayland.enable = false;
-
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-  nvi
-  dash
-  iwgtk
-  cage
-  pragha
-  brave 
-  ffmpeg-full
-  mako
-  fastfetch
-  gimp3
-  transmission_4
-  hyprlandPlugins.hyprbars
-  adwaita-icon-theme
-  flat-remix-icon-theme
-  nwg-look
-  swww
-  gsimplecal
-  gtkgreet
-  glib
-  wofi
-  foot
-  wf-recorder
-  hyprpicker
-  libnotify
-  simple-mtpfs
-  dconf-editor
-  galculator
-  lxtask
-  imv
-  grim
-  slurp
-  gucharmap
-  unzip
-  p7zip
-  pavucontrol
-  pcmanfm
-  ffmpegthumbnailer
-  python3
-  waytrogen
-  kotatogram-desktop
+   adwaita-icon-theme
+   brightnessctl
+   cage
+   deadbeef
+   dash
+   dconf-editor
+   fastfetch
+   firefox
+   ffmpeg-full
+   ffmpegthumbnailer
+   foot
+   fuzzel
+   galculator
+   gimp3
+   glib
+   grim
+   gsimplecal
+   gtkgreet
+   gucharmap
+   hyprlandPlugins.borders-plus-plus
+   hyprlandPlugins.hyprbars
+   hyprpicker
+   imv
+   iwgtk
+   kotatogram-desktop
+   labwc
+   libnotify
+   lm_sensors
+   lxtask
+   mako
+   nvi
+   nwg-look
+   p7zip
+   pavucontrol
+   pcmanfm
+   python3
+   simple-mtpfs
+   slurp
+   awww
+   transmission_4
+   unzip
+   waypaper
+   wf-recorder
   ];
 
   # Set session environment
@@ -221,12 +213,12 @@
   services.avahi.enable = false;
   services.printing.enable = false;
 
-  # This value determines the NixOS release from which the default
+  # tHIS VALue determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 }
