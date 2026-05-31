@@ -25,22 +25,22 @@ export cyan CYAN white WHITE yellow YELLOW NC
 # =====================================================
 alias myip='curl ident.me; echo'
 alias mynix='clear; fastfetch; lsblk -f'
-alias nixvi='doas vi /etc/nixos/configuration.nix'
-alias nixhd='doas vi /etc/nixos/hardware-configuration.nix'
+alias nixed='doas nano /etc/nixos/configuration.nix'
+alias nixhd='doas nano /etc/nixos/hardware-configuration.nix'
 alias nixup='doas nixos-rebuild switch --upgrade'
 alias nixrm='doas nix-collect-garbage --delete-old; doas /run/current-system/bin/switch-to-configuration boot'
 alias nixs='nix-env -qaP'
 alias nixsh='nix-shell -p'
 alias nixr='nix-collect-garbage'
 alias nixlsg='doas nix-env --list-generations --profile /nix/var/nix/profiles/system'
-alias hyprrc='vi "$HOME/.config/hypr/hyprland.conf"'
-alias Nix='clear; fastfetch'
+alias hyprrc='nano "$HOME/.config/hypr/hyprland.conf"'
+alias Nix='clear; fastfetch; lsblk'
 alias du-='du -sh ~ /nix/store'
-alias shrc='vi ~/.shrc'
-alias exrc='vi ~/.exrc'
+alias shrc='nano ~/.shrc'
 alias doas-i='doas su -'
 alias clvitmp='rm -fv /tmp/vi*'
 alias la='ls -la'
+alias pick='hyprpicker'
 
 # =====================================================
 # FUNCTIONS 
