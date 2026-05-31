@@ -1,4 +1,4 @@
 #!/usr/bin/env dash
 pkill waybar
-waybar -c /home/void/.config/hypr/waybar/lightwaybar.conf -s /home/void/.config/hypr/waybar/light.css 
-#waybar -c /home/void/.config/hypr/waybar/lightwaybar2.conf -s /home/void/.config/hypr/waybar/light.css &
+waybar -c /home/void/.config/hypr/waybar/darkwaybar.conf -s /home/void/.config/hypr/waybar/dark.css 
+#waybar -c /home/void/.config/hypr/waybar/darkwaybar2.conf -s /home/void/.config/hypr/waybar/dark.css &

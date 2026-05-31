@@ -1,0 +1,101 @@
+#!/usr/bin/env dash
+#
+# ufetch-nixos - tiny system info for nixos
+
+## INFO
+
+# user is already defined
+host="$(hostname)"
+os="$(nixos-version)"
+kernel="$(uname -sr)"
+uptime="$(uptime | awk -F, '{sub(".*up ",x,$1);print $1}' | sed -e 's/^[ \t]*//')"
+editor="$(echo EDITOR)"
+#packages="$(nix path-info -r /run/current-system/sw/ | wc -l)"
+packages="$(nixcount)"
+nvi="$(echo nvi)"
+shell="$(basename ${SHELL})"
+cpu="$(grep -m1 'model name' /proc/cpuinfo | sed 's/.*: //')"
+cpu_cores="$(lscpu | awk '/Core\(s\) per socket:/ {cores=$4} /Socket\(s\):/ {sockets=$2} END {print cores*sockets}')"
+gpu="unknown"
+
+# 1️⃣ tenta GPU ativa via OpenGL (Wayland/X11)
+if command -v glxinfo >/dev/null 2>&1; then
+	gpu="$(glxinfo -B 2>/dev/null | awk -F': ' '/Device:/ {print $2}')"
+fi
+
+# 2️⃣ fallback: lspci (sempre funciona)
+if [ -z "$gpu" ] || [ "$gpu" = "unknown" ]; then
+	gpu="$(lspci 2>/dev/null | grep -E 'VGA|3D|Display' \
+		| sed -E 's/.*: //; s/ \(rev.*\)//' \
+		| paste -sd ' | ' -)"
+fi
+
+# 3️⃣ driver em uso (opcional, mas top)
+gpu_driver="$(lspci -k 2>/dev/null | awk '
+	/VGA|3D|Display/ {flag=1}
+	flag && /Kernel driver in use/ {
+		sub(/.*: /,""); print; exit
+	}'
+)"
+
+if [ -z "${WM}" ]; then
+	if [ "${XDG_CURRENT_DESKTOP}" ]; then
+		envtype='DE'
+		WM="${XDG_CURRENT_DESKTOP}"
+	elif [ "${DESKTOP_SESSION}" ]; then
+		envtype='DE'
+		WM="${DESKTOP_SESSION}"
+	else
+		envtype='WM'
+	fi
+else
+	envtype='WM'
+fi
+
+## DEFINE COLORS
+
+# probably don't change these
+bold="$(tput bold)"
+black="$(tput setaf 0)"
+red="$(tput setaf 1)"
+green="$(tput setaf 2)"
+yellow="$(tput setaf 3)"
+blue="$(tput setaf 4)"
+magenta="$(tput setaf 5)"
+cyan="$(tput setaf 6)"
+white="$(tput setaf 7)"
+reset="$(tput sgr0)"
+
+# you can change these
+lc="${reset}${bold}${blue}"		# labels
+nc="${reset}${bold}${blue}"		# user and hostname
+ic="${reset}${bold}${white}"	# info
+c0="${reset}${blue}"			# first color
+c1="${reset}${bold}${blue}"		# second color
+
+## OUTPUT
+
+sed 's/\\/\\\\/g' <<EOF
+
+${c1}          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖             ${nc}${USER}${ic}@${rc}${nc}${host}${reset}
+${c1}          ▜███▙       ▜███▙  ▟███▛             ${lc}OS:        ${ic}${os}${reset}
+${c1}           ▜███▙       ▜███▙▟███▛              ${lc}KERNEL:    ${ic}${kernel}${reset}
+${c1}            ▜███▙       ▜██████▛               ${lc}UPTIME:    ${ic}${uptime}${reset}
+${c1}     ▟█████████████████▙ ▜████▛     ▟▙         ${lc}PACKAGES:  ${ic}${packages} ${nc}(nix-system)${reset}
+${c1}    ▟███████████████████▙ ▜███▙    ▟██▙        ${lc}SHELL:     ${ic}${shell}${reset}
+${c1}           ▄▄▄▄▖           ▜███▙  ▟███▛        ${lc}${envtype}:        ${ic}${WM}${reset}
+${c1}          ▟███▛             ▜██▛ ▟███▛         ${lc}CPU:       ${ic}${cpu}(x${cpu_cores})${reset}
+${c1}         ▟███▛               ▜▛ ▟███▛          ${lc}GPU:       ${ic}${gpu}${reset}
+${c1}▟███████████▛                  ▟██████████▙    ${lc}DRIVER:    ${ic}${gpu_driver}${reset}
+${c1}▜██████████▛                  ▟███████████▛    ${lc}${editor}:    ${ic}${nvi}${reset}
+${c1}      ▟███▛ ▟▙               ▟███▛             
+${c1}     ▟███▛ ▟██▙             ▟███▛              
+${c1}    ▟███▛  ▜███▙           ▝▀▀▀▀               
+${c1}    ▜██▛    ▜███▙ ▜██████████████████▛         
+${c1}     ▜▛     ▟████▙ ▜████████████████▛          
+${c1}           ▟██████▙       ▜███▙                
+${c1}          ▟███▛▜███▙       ▜███▙               
+${c1}         ▟███▛  ▜███▙       ▜███▙              
+${c1}         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘ ${reset} 
+
+EOF

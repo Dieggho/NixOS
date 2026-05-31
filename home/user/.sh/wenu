@@ -1,37 +1,61 @@
 #!/usr/bin/env dash
-QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-pkill wofi
-entries=" File\n Telegram\n Pragha\n Browser\n Editor\n Calculator\n DConf\n Gucharmap\n Gtk-Theme\n Blueman\n Wallpapers\n Terminal\n SmartTerminal\nX"
 
-selected=$(echo $entries|wofi -x 0 --width 300 --height 490 --dmenu --cache-file /dev/null --prompt=Applications | awk '{print tolower($2)}')
+pkill fuzzel 2>/dev/null
 
-case $selected in
+entries=" File
+ Telegram
+ Deadbeef
+ Browser
+ Editor
+ Gimp
+ Calculator
+ DConf
+ Gucharmap
+ Gtk-Theme
+ Wallpapers
+ Terminal
+ SmartTerminal"
+
+selected=$(printf '%s\n' "$entries" | fuzzel --dmenu --lines 13 --width 20 --anchor top-left --prompt "Applications > " | awk '{print tolower($2)}')
+
+case "$selected" in
   file)
-    pcmanfm;;
-  pragha)
-    pragha;;
+    pcmanfm
+    ;;
+  deadbeef)
+    deadbeef
+    ;;
   telegram)
-    kotatogram-desktop;;
+    kotatogram-desktop
+    ;;
   browser)
-   brave;;
+    firefox
+    ;;
   editor)
-    Edit;;
+    lite-xl
+    ;;
+  gimp)
+    gimp
+    ;;
   calculator)
-    galculator;;
+    galculator
+    ;;
   dconf)
-    dconf-editor;;
+    dconf-editor
+    ;;
   gucharmap)
-    gucharmap;;
+    gucharmap
+    ;;
   gtk-theme)
-    nwg-look;;
-  blueman)
-    blueman-manager;;
+    nwg-look
+    ;;
   wallpapers)
-    waytrogen;;
+    waypaper
+    ;;
   terminal)
-    foot;;
+    foot
+    ;;
   smartterminal)
-    foot -a SmartTerm;;
-   x)
-  pkill wofi;;
+    foot -a SmartTerm
+    ;;
 esac

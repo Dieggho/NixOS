@@ -1,22 +1,29 @@
 #!/usr/bin/env dash
 
-pkill wofi
+pkill fuzzel 2>/dev/null
 
-entries=" Logout\n⏾ Suspend\n Lock\n Reboot\n Shutdown\nX"
+entries=" Logout
+⏾ Suspend
+ Lock
+ Reboot
+ Shutdown"
 
-selected=$(echo $entries|wofi -x 1710 --width 1 --height 220 --dmenu --cache-file /dev/null --prompt="Session Manager"| awk '{print tolower($2)}')
+selected=$(printf '%s\n' "$entries" | fuzzel --lines 5 --dmenu --width 13 --anchor top-right --prompt "Session > " | awk '{print tolower($2)}')
 
-case $selected in
+case "$selected" in
   logout)
-    logoff;;
+    hyprctl dispatch exit
+    ;;
   suspend)
-    sleep 0.3 ; systemctl suspend;;
+    sleep 0.3 ; systemctl suspend 
+    ;;
   lock)
-   sleep 0.3 ; lock;;
+    sleep 0.3 ; lock 
+    ;;
   reboot)
-    reboot;;
-  shutdown)
-    poweroff;;
- x)
-  pkill wofi;;
+    reboot 
+    ;;
+   shutdown)
+    poweroff 
+    ;;
 esac

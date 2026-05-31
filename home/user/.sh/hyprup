@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+hyprctl dispatch 'hl.dsp.focus({ workspace = "-1" })'

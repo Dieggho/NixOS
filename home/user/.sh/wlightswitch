@@ -1,16 +1,15 @@
 #!/usr/bin/env dash
 
-pkill wofi
+pkill fuzzel 2>/dev/null
 
-entries=" Light\n⏾ Dark\nX"
+entries=" Light
+⏾ Dark"
 
-selected=$(echo $entries|wofi -x 1710 --width 1 --height 120 --dmenu --cache-file /dev/null --prompt="Light Switch"| awk '{print tolower($2)}')
+selected=$(printf '%s\n' "$entries" | fuzzel --lines 2 --dmenu --width 13 --anchor top-right --prompt "Light Switch > " | awk '{print tolower($2)}')
 
-case $selected in
+case "$selected" in
   light)
     -bluesky;;
   dark)
-    -arcdarkest;;
- x)
-  pkill wofi;;
+    -space-dark;;
 esac

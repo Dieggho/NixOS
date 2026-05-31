@@ -1,23 +1,5 @@
 #!/usr/bin/env dash
-
-SYSTEM_PATH="/run/current-system/sw"
-CACHE="/tmp/fastfetch-nixos-packages.cache"
-TTL=300
-
-now=$(date +%s)
-
-if [[ -f "$CACHE" ]]; then
-  last=$(stat -c %Y "$CACHE")
-  if (( now - last < TTL )); then
-    cat "$CACHE"
-    exit 0
-  fi
-fi
-
-if [[ -e "$SYSTEM_PATH" ]]; then
-  count=$(nix-store --query --requisites "$SYSTEM_PATH" 2>/dev/null | wc -l)
-else
-  count=0
-fi
-
-echo "$count" | tee "$CACHE"
+nix-store --query --requisites /run/current-system/sw \
+  | sed 's|/nix/store/[a-z0-9]\{32\}-||' \
+  | sed 's/-[0-9].*$//' \
+  | sort | uniq | wc -l

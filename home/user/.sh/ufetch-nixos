@@ -9,10 +9,34 @@ host="$(hostname)"
 os="$(nixos-version)"
 kernel="$(uname -sr)"
 uptime="$(uptime | awk -F, '{sub(".*up ",x,$1);print $1}' | sed -e 's/^[ \t]*//')"
-packages="$(nixcount)"
 editor="$(echo EDITOR)"
+#packages="$(nix path-info -r /run/current-system/sw/ | wc -l)"
+packages="$(nixcount)"
 nvi="$(echo nvi)"
 shell="$(basename ${SHELL})"
+cpu="$(grep -m1 'model name' /proc/cpuinfo | sed 's/.*: //')"
+cpu_cores="$(lscpu | awk '/Core\(s\) per socket:/ {cores=$4} /Socket\(s\):/ {sockets=$2} END {print cores*sockets}')"
+gpu="unknown"
+
+# 1️⃣ tenta GPU ativa via OpenGL (Wayland/X11)
+if command -v glxinfo >/dev/null 2>&1; then
+	gpu="$(glxinfo -B 2>/dev/null | awk -F': ' '/Device:/ {print $2}')"
+fi
+
+# 2️⃣ fallback: lspci (sempre funciona)
+if [ -z "$gpu" ] || [ "$gpu" = "unknown" ]; then
+	gpu="$(lspci 2>/dev/null | grep -E 'VGA|3D|Display' \
+		| sed -E 's/.*: //; s/ \(rev.*\)//' \
+		| paste -sd ' | ' -)"
+fi
+
+# 3️⃣ driver em uso (opcional, mas top)
+gpu_driver="$(lspci -k 2>/dev/null | awk '
+	/VGA|3D|Display/ {flag=1}
+	flag && /Kernel driver in use/ {
+		sub(/.*: /,""); print; exit
+	}'
+)"
 
 if [ -z "${WM}" ]; then
 	if [ "${XDG_CURRENT_DESKTOP}" ]; then
@@ -57,9 +81,12 @@ ${c0}    \\   ${c1}\\ //    ${nc}${USER}${ic}@${rc}${nc}${host}${reset}
 ${c0}   ==\\___${c1}\\/ ${c0}//  ${lc}OS:        ${ic}${os}${reset}
 ${c1}     //    \\${c0}//   ${lc}KERNEL:    ${ic}${kernel}${reset}
 ${c1}  ==//      ${c0}//==  ${lc}UPTIME:    ${ic}${uptime}${reset}
-${c1}   //${c0}\\${c1}____${c0}//     ${lc}PACKAGES:  ${ic}${packages}${reset}
+${c1}   //${c0}\\${c1}____${c0}//     ${lc}PACKAGES:  ${ic}${packages} ${nc}(nix-system)${reset}
 ${c1}  // ${c0}/\\   ${c1}\\==   ${lc}SHELL:     ${ic}${shell}${reset}
 ${c0}    // \\   ${c1}\\    ${lc}${envtype}:        ${ic}${WM}${reset}
+${c1}              ${c0}    ${lc}CPU:       ${ic}${cpu}(x${cpu_cores})${reset}
+${c1}              ${c0}    ${lc}GPU:       ${ic}${gpu}${reset}
+${c1}              ${c0}    ${lc}DRIVER:    ${ic}${gpu_driver}${reset}
 ${c0}              ${c1}    ${lc}${editor}:    ${ic}${nvi}${reset}
 
 EOF

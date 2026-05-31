@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+doas dd if=$1 of=/dev/$2 status=progress bs=64M conv=fsync
