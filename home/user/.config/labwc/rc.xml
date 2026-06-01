@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<!--
+  This is a very simple config file with many options missing. For a complete
+  set of options with comments, see docs/rc.xml.all
+-->
+<labwc_config>
+  <theme>
+    <name>Space-dark</name>
+    <cornerRadius>14</cornerRadius>
+    <font name="sans" size="12"/>
+  </theme>
+  <keyboard>
+    <default/>
+    <!-- Use a different terminal emulator -->
+    <keybind key="W-Return">
+      <action name="Execute" command="foot"/>
+    </keybind>
+    <keybind key="Print">
+      <action name="Execute" command="screenshot"/>
+    </keybind>
+    <keybind key="S-Print">
+      <action name="Execute" command="wlshot"/>
+    </keybind>
+    <!--
+      Remove a previously defined keybind
+      A shorter alternative is <keybind key="W-F4" />
+    -->
+    <keybind key="W-F4">
+      <action name="None"/>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <default/>
+    <!-- Show a custom menu on desktop right click -->
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="some-custom-menu"/>
+      </mousebind>
+    </context>
+  </mouse>
+  <libinput>
+    <device>
+      <naturalScroll>no</naturalScroll>
+    </device>
+  </libinput>
+  <desktops>
+    <popupTime>1000</popupTime>
+    <names>
+      <name>Main</name>
+      <name>Web</name>
+      <name>Net</name>
+      <name>Doc</name>
+      <name>Term</name>
+      <name>Media</name>
+      <name>Desk</name>
+    </names>
+  </desktops>
+  <keyboard>
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="Main"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="Web"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="Net"/>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="Doc"/>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="Term"/>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop" to="Media"/>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop" to="Desk"/>
+    </keybind>
+    <keybind key="W-T">
+      <action name="Execute">
+       <command>foot</command>
+    </action>
+   </keybind>
+    <keybind key="C-A-T">
+      <action name="Execute">
+       <command>foot -a SmartTerm</command>
+    </action>
+   </keybind>
+    <keybind key="W-f">
+      <action name="Execute">
+       <command>fuzzel</command>
+    </action>
+   </keybind>
+    <keybind key="W-c">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute">
+       <command>wlrctl window minimize</command>
+      </action>
+    </keybind>
+
+    <keybind key="W-8">
+     <action name="GoToDesktop">
+      <to>left</to>
+     </action>
+    </keybind>
+
+    <keybind key="W-9">
+     <action name="GoToDesktop">
+      <to>right</to>
+     </action>
+    </keybind>
+
+  </keyboard>
+  <windowRules>
+    <windowRule identifier="*" serverDecoration="yes"/>
+    <windowRule identifier="firefox" serverDecoration="yes"/>
+    <windowRule identifier="org.telegram.desktop" serverDecoration="no"/>
+ 
+  <windowRule identifier="deadbeef">
+    <action name="SendToDesktop" to="Main" follow="yes" wrap="yes" />
+  </windowRule> 
+
+  <windowRule identifier="org.telegram.desktop">
+    <action name="SendToDesktop" to="Main" follow="yes" wrap="yes" />
+  </windowRule> 
+
+  <windowRule identifier="firefox">
+    <action name="SendToDesktop" to="Web" follow="yes" wrap="yes" />
+  </windowRule> 
+
+  <windowRule identifier="transmission">
+    <action name="SendToDesktop" to="Net" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="org.xfce.mousepad">
+    <action name="SendToDesktop" to="Doc" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="foot">
+    <action name="SendToDesktop" to="Term" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="imv">
+    <action name="SendToDesktop" to="Media" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="mpv">
+    <action name="SendToDesktop" to="Media" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="gimp-2.10">
+    <action name="SendToDesktop" to="Media" follow="yes" wrap="yes" />
+    <action name="maximize" />
+  </windowRule>
+
+  <windowRule identifier="org.pulseaudio.pavucontrol">
+    <action name="SendToDesktop" to="Desk" follow="yes" wrap="yes" />
+  </windowRule>
+
+  <windowRule identifier="waypaper">
+    <action name="SendToDesktop" to="Desk" follow="yes" wrap="yes" />
+  </windowRule>
+
+  <windowRule identifier="unknown">
+    <action name="SendToDesktop" to="Desk" follow="yes" wrap="yes" />
+  </windowRule>
+
+  </windowRules>
+
+</labwc_config>

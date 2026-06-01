@@ -1,0 +1,29 @@
+#!/usr/bin/env dash
+
+pkill fuzzel 2>/dev/null
+
+entries=" Logout
+⏾ Suspend
+ Lock
+ Reboot
+ Shutdown"
+
+selected=$(printf '%s\n' "$entries" | fuzzel --lines 5 --dmenu --width 13 --anchor top-right --prompt "Session > " | awk '{print tolower($2)}')
+
+case "$selected" in
+  logout)
+    wlrctl window close; sleep 1; pkill labwc
+    ;;
+  suspend)
+    sleep 0.3 ; systemctl suspend 
+    ;;
+  lock)
+    sleep 0.3 ; lock 
+    ;;
+  reboot)
+    reboot 
+    ;;
+   shutdown)
+    poweroff 
+    ;;
+esac
