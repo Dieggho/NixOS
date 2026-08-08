@@ -1,0 +1,2 @@
+#!/bin/sh
+hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" })'

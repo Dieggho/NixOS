@@ -1,0 +1,2 @@
+#!/bin/sh
+hyprctl dispatch 'hl.dsp.focus({ workspace = "r+1" })'

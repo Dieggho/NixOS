@@ -1,7 +1,7 @@
 #!/usr/bin/env dash
 
 pkill fuzzel 2>/dev/null
-hyprctl dispatch fullscreen 1
+maximize
 
 entries=" Main
  Web
@@ -12,21 +12,27 @@ entries=" Main
  Desk"
 
 selected=$(printf '%s\n' "$entries" | fuzzel --lines 7 --dmenu --width 13 | awk '{print tolower($2)}')
-
 case "$selected" in
 main)
-    hyprctl dispatch movetoworkspace 1;;
+    hyprctl dispatch movetoworkspace 1;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 1})';;
 web)
-    hyprctl dispatch movetoworkspace 2;;
+    hyprctl dispatch movetoworkspace 2;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 2})';;
 net)
-    hyprctl dispatch movetoworkspace 3;;
+    hyprctl dispatch movetoworkspace 3;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 3})';;
 doc)
-    hyprctl dispatch movetoworkspace 4;;
+    hyprctl dispatch movetoworkspace 4;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 4})';;
 term)
-    hyprctl dispatch movetoworkspace 5;;
+    hyprctl dispatch movetoworkspace 5;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 5})';;
 media)
-    hyprctl dispatch movetoworkspace 6;;
+    hyprctl dispatch movetoworkspace 6;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 6})';;
 desk)
-    hyprctl dispatch movetoworkspace 7;;
+    hyprctl dispatch movetoworkspace 7;
+    hyprctl dispatch 'hl.dsp.window.move({ workspace = 7})';;
 esac
-hyprctl dispatch fullscreen 1
+maximize

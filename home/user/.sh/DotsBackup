@@ -1,0 +1,2 @@
+#!/usr/bin/env dash
+doas rsync -aAXv /home/void/ --exclude={,/home/void/Documents/*,/home/void/Downloads/*,/home/void/Music/*,/home/void/Videos/*}  /mnt/

@@ -12,7 +12,7 @@ selected=$(printf '%s\n' "$entries" | fuzzel --lines 5 --dmenu --width 13 --anch
 
 case "$selected" in
   logout)
-    hyprctl dispatch exit
+    hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'
     ;;
   suspend)
     sleep 0.3 ; systemctl suspend 
