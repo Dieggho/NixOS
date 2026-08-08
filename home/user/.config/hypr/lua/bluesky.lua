@@ -437,11 +437,25 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name  = "galculator",
+    match = { class = "galculator" },
+    float      = true,
+})
+
+hl.window_rule({
     name  = "lxtask",
     match = { class = "lxtask" },
     float      = true,
     size = {300, 500},
     move = {810, 300},
+})
+
+hl.window_rule({
+    name  = "xdg-desktop-portal-gtk",
+    match = { class = "xdg-desktop-portal-gtk" },
+    float      = true,
+    size = {900, 700},
+    move = {500, 200},
 })
 
 hl.window_rule({
