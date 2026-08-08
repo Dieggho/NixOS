@@ -7,10 +7,9 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "thinkpad_acpi" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.loader.timeout = 3;
   boot.consoleLogLevel = 0;
@@ -18,9 +17,13 @@
   boot.kernelParams = [
         "udev.log_level=3"
         "udev.log_priority=3"
-        "acpi_backlight=native"
+        "acpi_backlight=video"
         "fbcon=nodefer"
-        "i915.fastboot=1"
+        "slab_nomerge"
+        "page_alloc.shuffle=1"
+        "pti=on"
+        "nvme.noacpi=1"
+        "nvme_core.default_ps_max_latency_us=0"
         "nowatchdog"
         "quiet"
         "splash"
@@ -30,14 +33,14 @@
     ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/luks-7a855182-72f3-45e3-8411-72e8f8dd91fa";
+    { device = "/dev/mapper/root";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-7a855182-72f3-45e3-8411-72e8f8dd91fa".device = "/dev/disk/by-uuid/7a855182-72f3-45e3-8411-72e8f8dd91fa";
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/eebac66d-58fa-4453-b98b-0b9ddfa39599";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C0C7-91F3";
+    { device = "/dev/disk/by-uuid/45D9-DAF5";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };

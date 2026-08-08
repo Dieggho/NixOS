@@ -11,6 +11,22 @@
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # Hardening
+  boot.kernel.sysctl = {
+  "kernel.randomize_va_space" = 2;
+  "vm.mmap_rnd_bits" = 32;
+  "vm.mmap_rnd_compat_bits" = 16;
+  };
+
+  nixpkgs.config.hardening = {
+  enable = true;
+  pie = true;
+  relro = "full";
+  now = true;
+  stackprotector = true;
+  fortify = true;
+  };
 
   # Enable Wifi
   networking.hostName = "X1-Carbon"; # Define your hostname.
@@ -21,7 +37,7 @@
   # boot.kernelPackages = pkgs.linuxPackages;
   
   # ThinkPad battery + power
-   services.tlp = {
+  services.tlp = {
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_BAT="powersave";
@@ -118,14 +134,6 @@
     enable = true;
   }; 
 
-xdg.portal = {
-  enable = true;
-  extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-  ];
-};
-
   # Default shell
   users.defaultUserShell = pkgs.mksh;
   
@@ -141,9 +149,13 @@ xdg.portal = {
     ];
   };
 
+  # Remove defalt packages
+  programs.xwayland.enable = false;
+
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
    adwaita-icon-theme
+   awww
    brightnessctl
    cage
    deadbeef
@@ -162,17 +174,16 @@ xdg.portal = {
    gsimplecal
    gtkgreet
    gucharmap
-   hyprlandPlugins.borders-plus-plus
    hyprlandPlugins.hyprbars
    hyprpicker
    imv
    iwgtk
    kotatogram-desktop
-   labwc
    libnotify
    lm_sensors
    lxtask
    mako
+   mousepad
    nvi
    nwg-look
    p7zip
@@ -181,7 +192,6 @@ xdg.portal = {
    python3
    simple-mtpfs
    slurp
-   awww
    transmission_4
    unzip
    waypaper
@@ -220,5 +230,5 @@ xdg.portal = {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }
