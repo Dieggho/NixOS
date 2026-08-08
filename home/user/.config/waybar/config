@@ -2,25 +2,24 @@
     "output": ["eDP-1"],
     "spacing": 4,
 		// try to keep it 4px across the config
-    "height":25,
-    // "margin-left": 4,
-    // "margin-right": 4,
-    // "margin-top": 4,
-    // "margin-radius": 4,
-    "layer": "top",
-    "modules-left": ["custom/menu", "wlr/workspaces", "wlr/taskbar"],
-    "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "battery", "battery#bat1", "network#net1", "custom/alsa",  "custom/session"],
+    "height":33,
+     "margin-left": 6,
+     "margin-right": 6,
+     "margin-top": 6,
+     "margin-radius": 6,
+    // "layer": "top",
+    "modules-left": ["custom/menu", "ext/workspaces" ],
+    "modules-right": ["cpu", "memory", "battery", "battery#bat1",  "clock", "network#net1", "pulseaudio",  "custom/session"],
     "battery": {
         "format": "{icon} {capacity}% ",
 	"interval": 10,
     },
    
 	"custom/menu": {
-        "format": "        ",
+        "format": "               ",
         "tooltip": false,
         "on-click": "/home/void/.sh/wenu",
-        "on-click-middle": "/home/void/.sh/Terminal",
+        "on-click-middle": "foot",
         "on-click-right": "pkill wofi",
     },
 
@@ -32,6 +31,26 @@
     "on-click-middle": "close",
     "icon-size": 22,
     },
+
+   "ext/workspaces": {
+    //"format": "   {name}   ",
+    //"sort-by-id": true,
+	  "format": "   {icon}   ",
+	  "format-icons": {
+		"1":"Main",
+		"2":"Web",
+		"3":"Net",
+		"4":"Doc",
+		"5":"Term",
+		"6":"Media",
+		"7":"Desk",
+	},
+    "on-click": "activate",
+    //"on-scroll-up": "wtype -M logo -k 8 -m logo",
+    //"on-scroll-down": "wtype -M logo -k 9 -m logo",
+    "on-scroll-up": "rollup",
+    "on-scroll-down": "rolldown",
+   },
 
      // "network": {
      // "interface": "wlp2s0",
@@ -53,26 +72,26 @@
      "tooltip-format-ethernet": " {ifname} ",
      "tooltip-format-disconnected": "Disconnected",
      "interval": 1,
-     "on-click": "wpa_gui"
+     "on-click": "iwgtk"
      },
 
     "clock": {
         // "timezone": "America/Sao_Paulo",
-        "tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%H:%M}",
-        "format-alt": " {:%d/%m/%Y}",
+        // "tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%A %d %B %Y     %T}",
 	"interval": 1,
+	"on-click": "gsimplecal",
     },
 
     "cpu": {
         "format": " {usage}%",
-        "on-click": "Htop",
+        "on-click": "lxtask",
 	"interval": 1,
     },
 
     "memory": {
         "format": " {percentage}%",
-        "on-click": "Htop",
+        "on-click": "lxtask",
 	"interval": 1,
     },
 
@@ -97,6 +116,24 @@
         "interval": 1,
         "tooltip": false
     },
+
+   "pulseaudio": {
+         "format": "{icon} {volume}%",
+         "format-bluetooth": "{icon} {volume}%",
+         "format-muted": "",
+         "format-icons": {
+              "headphones": "",
+              "handsfree": "",
+              "headset": "",
+              "phone": "",
+              "portable": "",
+              "car": "",
+              "default": ["", ""]
+             },
+         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; pkill -x -RTMIN+11 waybar",
+         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; pkill -x -RTMIN+11 waybar",
+         "on-click": "pavucontrol",
+     },
 
 	"custom/session": {
         "format": "  ⏻  ",
