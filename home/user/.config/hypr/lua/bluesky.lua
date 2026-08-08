@@ -525,6 +525,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name  = "ffplay",
+    match = { class = "ffplay"},
+    workspace = 6,
+})
+
+hl.window_rule({
     name  = "imv",
     match = { class = "imv"},
     workspace = 6,

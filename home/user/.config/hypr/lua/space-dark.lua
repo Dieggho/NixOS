@@ -531,6 +531,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name  = "ffplay",
+    match = { class = "ffplay"},
+    workspace = 6,
+})
+
+hl.window_rule({
     name  = "Gimp-2.10",
     match = { class = "Gimp-2.10"},
     workspace = 6,
