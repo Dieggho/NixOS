@@ -135,18 +135,18 @@ hl.config({
     },
     plugin = {
         hyprbars = {
-        bar_height = 22,
+        bar_height = 24,
         bar_title_enabled = true,
         bar_text_align = "left",
         bar_text_font = "DejaVu Sans Mono Bold",
         bar_text_size = 14,
-        --con_on_hover = true, 
-        bar_color = "rgba(6895CFff)",
+        icon_on_hover = true, 
+        bar_color = "rgb(6895CF)",
         bar_part_of_window = true,
         bar_precedence_over_border = true,
         bar_button_padding = 15,
         bar_padding = 12,
-        --col.text = "rgba(5378B6ff)",
+        ["col.text"] = "rgb(ffffff)",
         },
     },
 })

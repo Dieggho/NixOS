@@ -135,7 +135,7 @@ hl.config({
     },
     plugin = {
         hyprbars = {
-        bar_height = 22,
+        bar_height = 24,
         bar_title_enabled = true,
         bar_text_align = "left",
         bar_text_font = "DejaVu Sans Mono Bold",
