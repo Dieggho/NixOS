@@ -545,6 +545,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "nwg-look",
     match = { class = "nwg-look"},
+    float = true, 
     workspace = 7,
 })
 
