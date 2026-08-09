@@ -45,7 +45,7 @@ local waypaper    = "waypaper"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function () 
-   hl.exec_cmd("hyprbar & reloadwaybar & waypaper --restore &  mako & waybar & dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XAUTHORITY  &")
+   hl.exec_cmd("hyprbar & waypaper --restore &  mako & reloadwaybar & dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XAUTHORITY  &")
 end)
 
 
@@ -93,8 +93,8 @@ hl.config({
         border_size = 6,
 
         col = {
-            active_border   = { colors = {"rgb(6895CF)", "rgb(435B8E)", "rgb(435B8E)"}, angle = 99 },
-            inactive_border = "rgb(6895CF)",
+           active_border   = { colors = {"rgb(111317)", "rgb(040405)", "rgb(040405)"}, angle = 99 },
+           inactive_border = "rgb(111317)",
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
@@ -119,7 +119,7 @@ hl.config({
             enabled      = true,
             range        = 6,
             render_power = 6,
-            color        = 0xee444444,
+            color        = 0xee000000,
         },
 
         blur = {
@@ -141,7 +141,7 @@ hl.config({
         bar_text_font = "DejaVu Sans Mono Bold",
         bar_text_size = 14,
         --con_on_hover = true, 
-        bar_color = "rgba(6895CFff)",
+        bar_color = "rgb(16181D)",
         bar_part_of_window = true,
         bar_precedence_over_border = true,
         bar_button_padding = 15,
@@ -152,24 +152,24 @@ hl.config({
 })
 
 hl.plugin.hyprbars.add_button({
-    bg_color = "rgb(5378B6)",
-    fg_color = "rgb(5378B6)",
+    bg_color = "rgb(0b0d0f)",
+    fg_color = "rgb(ffffff)",
     size = 18,
     icon = "  ", -- Ícone Nerd Font ou caractere
     action = "hyprctl dispatch 'hl.dsp.window.close()'",
 })
 
 hl.plugin.hyprbars.add_button({
-    bg_color = "rgb(5378B6)",
-    fg_color = "rgb(5378B6)",
+    bg_color = "rgb(0b0d0f)",
+    fg_color = "rgb(0b0d0f)",
     size = 18,
     icon = "",
     action = "maximize",
 })
 
 hl.plugin.hyprbars.add_button({
-    bg_color = "rgb(5378B6)",
-    fg_color = "rgb(5378B6)",
+    bg_color = "rgb(0b0d0f)",
+    fg_color = "rgb(0b0d0f)",
     size = 18,
     icon = "",
     action = "move_top_level_to",
@@ -525,14 +525,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "ffplay",
-    match = { class = "ffplay"},
+    name  = "imv",
+    match = { class = "imv"},
     workspace = 6,
 })
 
 hl.window_rule({
-    name  = "imv",
-    match = { class = "imv"},
+    name  = "ffplay",
+    match = { class = "ffplay"},
     workspace = 6,
 })
 
@@ -545,6 +545,7 @@ hl.window_rule({
 hl.window_rule({
     name  = "nwg-look",
     match = { class = "nwg-look"},
+    float = true, 
     workspace = 7,
 })
 
