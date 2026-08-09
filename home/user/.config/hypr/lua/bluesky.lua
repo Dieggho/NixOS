@@ -148,6 +148,16 @@ hl.config({
         bar_padding = 12,
         ["col.text"] = "rgb(ffffff)",
         },
+        borders_plus_plus = {
+            add_borders = 1,
+            natural_rounding = true,
+
+            col = {
+                border_1 = "rgb(98B2D5)",
+            },
+
+            border_size_1 = 1,
+     },
     },
 })
 
