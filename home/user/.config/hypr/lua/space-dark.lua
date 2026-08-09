@@ -146,7 +146,7 @@ hl.config({
         bar_precedence_over_border = true,
         bar_button_padding = 15,
         bar_padding = 12,
-        --col.text = "rgba(5378B6ff)",
+         ["col.text"]  = "rgb(5378B6)",
         },
     },
 })
