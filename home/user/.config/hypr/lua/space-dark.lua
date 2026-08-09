@@ -140,7 +140,7 @@ hl.config({
         bar_text_align = "left",
         bar_text_font = "DejaVu Sans Mono Bold",
         bar_text_size = 14,
-        --con_on_hover = true, 
+        icon_on_hover = true, 
         bar_color = "rgb(16181D)",
         bar_part_of_window = true,
         bar_precedence_over_border = true,
